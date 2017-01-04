@@ -1,0 +1,24 @@
+PODS:
+  - Alamofire (4.2.0)
+  - AlamofireImage (3.2.0):
+    - Alamofire (~> 4.1)
+  - Reveal-iOS-SDK (1.6.2)
+  - SnapKit (3.1.2)
+  - YelpAPI (2.0.0)
+
+DEPENDENCIES:
+  - AlamofireImage (~> 3.1)
+  - Reveal-iOS-SDK
+  - SnapKit
+  - YelpAPI
+
+SPEC CHECKSUMS:
+  Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
+  AlamofireImage: 157ed682cc81d3b9db4fb90c1f12180ac552d93b
+  Reveal-iOS-SDK: e2250b3c155bcfac53ae223ddc1f76d08f206c33
+  SnapKit: 12b24f569cb7c143acc9c22b9d91b23e7b1c84a2
+  YelpAPI: a0475cf4a7b6f9fe81f1bb7b8a8492770f21e3c7
+
+PODFILE CHECKSUM: 3b27205ac6a9a3442e4e06ac6dd6a01bf84d2f13
+
+COCOAPODS: 1.2.0.beta.3
