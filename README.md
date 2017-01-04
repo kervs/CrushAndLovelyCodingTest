@@ -1,5 +1,5 @@
 # CrushAndLovelyCodingTest
-iOS app for Often
+iOS app for CrushAndLovelyCodingTest
 
 Setup Instructions:
 
