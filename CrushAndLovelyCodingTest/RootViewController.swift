@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  BrowseTabBarViewController.swift
 //  CrushAndLovelyCodingTest
 //
 //  Created by Kervins Valcourt on 1/3/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class BrowseTabBarViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +19,5 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 
