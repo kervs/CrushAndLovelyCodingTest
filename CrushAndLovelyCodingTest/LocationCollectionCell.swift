@@ -6,4 +6,65 @@
 //  Copyright © 2017 Crush and Lovely. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class LoactionCollectionCell: UICollectionViewCell  {
+    private var cellDivider: UIView
+
+    var locationImage: UIImageView
+    var titleLabel: UILabel
+
+    override init (frame: CGRect) {
+        cellDivider = UIView()
+        cellDivider.translatesAutoresizingMaskIntoConstraints = false
+        cellDivider.backgroundColor = UIColor.gray
+        cellDivider.alpha = 0.5
+
+        locationImage = UIImageView()
+        locationImage.translatesAutoresizingMaskIntoConstraints = false
+        locationImage.backgroundColor = UIColor.gray
+        locationImage.layer.cornerRadius = 3
+
+        titleLabel = UILabel()
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.textColor = UIColor.gray
+        titleLabel.text = ""
+
+        super.init(frame: frame)
+
+        backgroundColor = UIColor.white
+
+        addSubview(cellDivider)
+        addSubview(locationImage)
+        addSubview(titleLabel)
+
+        setupLayout()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    func setupLayout() {
+        cellDivider.snp.makeConstraints { view in
+            view.left.equalToSuperview()
+            view.right.equalToSuperview()
+            view.top.equalToSuperview()
+            view.height.equalTo(0.7)
+        }
+
+        locationImage.snp.makeConstraints { view in
+            view.left.equalTo(snp.left).offset(10.0)
+            view.centerY.equalTo(snp.centerY)
+            view.width.equalTo(50.0)
+            view.height.equalTo(50.0)
+        }
+
+        titleLabel.snp.makeConstraints { view in
+            view.bottom.equalTo(snp.centerY)
+            view.left.equalTo(locationImage.snp.right).offset(10)
+            view.right.equalToSuperview().offset(-42)
+        }
+    }
+
+}
