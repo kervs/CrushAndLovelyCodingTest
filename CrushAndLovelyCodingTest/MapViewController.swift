@@ -47,14 +47,16 @@ class MapViewController: BaseViewController {
     }
 
     func reloadMapData() {
+        let allAnnotations = self.mapView.annotations
+        mapView.removeAnnotations(allAnnotations)
+
         var locationAnnotation: [MKPointAnnotation] = []
 
-        for item in viewModel.locations {
+        for item in viewModel.businesses {
             if let business = item,
-                let latitude = business.location.coordinate?.latitude,
-                let longitude = business.location.coordinate?.longitude {
+                let location = business.location {
                 let annotation = MKPointAnnotation()
-                annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                annotation.coordinate = location
 
                 locationAnnotation.append(annotation)
             }
@@ -63,7 +65,7 @@ class MapViewController: BaseViewController {
         mapView.showAnnotations(locationAnnotation, animated: true)
     }
     
-    override func browseViewModelDidUpdateLocation(_ browseViewModel: BrowseViewModel, location: [YLPBusiness]) {
+    override func browseViewModelDidUpdateBusinessesNearUser(_ browseViewModel: BrowseViewModel, businesses: [Business?]) {
         reloadMapData()
     }
 }

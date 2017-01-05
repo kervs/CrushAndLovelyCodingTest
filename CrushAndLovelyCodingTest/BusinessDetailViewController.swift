@@ -1,5 +1,5 @@
 //
-//  LocationDetailViewController.swift
+//  BusinessDetailViewController.swift
 //  CrushAndLovelyCodingTest
 //
 //  Created by Kervins Valcourt on 1/4/17.
@@ -10,15 +10,15 @@ import UIKit
 import YelpAPI
 import MapKit
 
-class LocationDetailViewController: UIViewController {
-    private var detailVC: LocationDetailView
-    var locationItem: YLPBusiness
+class BusinessDetailViewController: UIViewController {
+    private var detailVC: BusinessDetailView
+    var business: Business
 
-    init(_ location: YLPBusiness) {
-        detailVC = LocationDetailView()
+    init(_ location: Business) {
+        detailVC = BusinessDetailView()
         detailVC.translatesAutoresizingMaskIntoConstraints = false
 
-        self.locationItem = location
+        self.business = location
 
         super.init(nibName: nil, bundle: nil)
 
@@ -46,18 +46,20 @@ class LocationDetailViewController: UIViewController {
     }
 
     func reloadMapData() {
+        let allAnnotations = detailVC.mapView.annotations
+        detailVC.mapView.removeAnnotations(allAnnotations)
+
         var locationAnnotation: [MKPointAnnotation] = []
 
-        if  let latitude = locationItem.location.coordinate?.latitude,
-            let longitude = locationItem.location.coordinate?.longitude {
+        if  let location = business.location {
             let annotation = MKPointAnnotation()
-            annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            annotation.coordinate = location
 
             locationAnnotation.append(annotation)
         }
 
         detailVC.mapView.showAnnotations(locationAnnotation, animated: true)
-        detailVC.title.text = locationItem.name
+        detailVC.title.text = business.name
     }
 
 }
