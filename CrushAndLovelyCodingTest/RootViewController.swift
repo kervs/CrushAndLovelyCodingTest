@@ -18,7 +18,7 @@ class RootViewController: UITabBarController {
 
     func setupTabBarItems() {
         let mapVC = UINavigationController(rootViewController: MapViewController())
-        let listVC = UINavigationController(rootViewController: LocationListViewController())
+        let listVC = UINavigationController(rootViewController: BusinessListViewController())
 
         mapVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
         listVC.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 1)

@@ -1,5 +1,5 @@
 //
-//  LocationCollectionCell.swift
+//  BusinessCollectionCell.swift
 //  CrushAndLovelyCodingTest
 //
 //  Created by Kervins Valcourt on 1/3/17.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-class LoactionCollectionCell: UICollectionViewCell  {
+class BusinessCollectionCell: UICollectionViewCell  {
     private var cellDivider: UIView
 
-    var locationImage: UIImageView
+    var businessImage: UIImageView
     var titleLabel: UILabel
 
     override init (frame: CGRect) {
@@ -20,10 +20,10 @@ class LoactionCollectionCell: UICollectionViewCell  {
         cellDivider.backgroundColor = UIColor.gray
         cellDivider.alpha = 0.5
 
-        locationImage = UIImageView()
-        locationImage.translatesAutoresizingMaskIntoConstraints = false
-        locationImage.backgroundColor = UIColor.gray
-        locationImage.layer.cornerRadius = 3
+        businessImage = UIImageView()
+        businessImage.translatesAutoresizingMaskIntoConstraints = false
+        businessImage.backgroundColor = UIColor.gray
+        businessImage.layer.cornerRadius = 3
 
         titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -35,7 +35,7 @@ class LoactionCollectionCell: UICollectionViewCell  {
         backgroundColor = UIColor.white
 
         addSubview(cellDivider)
-        addSubview(locationImage)
+        addSubview(businessImage)
         addSubview(titleLabel)
 
         setupLayout()
@@ -53,7 +53,7 @@ class LoactionCollectionCell: UICollectionViewCell  {
             view.height.equalTo(0.7)
         }
 
-        locationImage.snp.makeConstraints { view in
+        businessImage.snp.makeConstraints { view in
             view.left.equalTo(snp.left).offset(10.0)
             view.centerY.equalTo(snp.centerY)
             view.width.equalTo(50.0)
@@ -62,7 +62,7 @@ class LoactionCollectionCell: UICollectionViewCell  {
 
         titleLabel.snp.makeConstraints { view in
             view.bottom.equalTo(snp.centerY)
-            view.left.equalTo(locationImage.snp.right).offset(10)
+            view.left.equalTo(businessImage.snp.right).offset(10)
             view.right.equalToSuperview().offset(-42)
         }
     }

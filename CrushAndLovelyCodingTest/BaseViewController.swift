@@ -53,7 +53,7 @@ class BaseViewController: UIViewController,
         viewModel.fetchYelpLocationsNearUser()
     }
 
-    func browseViewModelDidUpdateLocation(_ browseViewModel: BrowseViewModel, location: [YLPBusiness]) {
+    func browseViewModelDidUpdateBusinessesNearUser(_ browseViewModel: BrowseViewModel, businesses: [Business?]) {
 
     }
 }
