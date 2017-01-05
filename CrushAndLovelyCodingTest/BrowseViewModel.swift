@@ -13,10 +13,10 @@ import CoreLocation
 class BrowseViewModel: NSObject {
     private var yelpClient: YLPClient?
     weak var delegate: BrowseViewModelDelegate?
-    var locations: [YLPBusiness?]
+    var businesses: [Business?]
 
     override init() {
-        locations = []
+        businesses = []
 
         super.init()
     }
@@ -36,9 +36,13 @@ class BrowseViewModel: NSObject {
     func fetchYelpLocationsNearUser(latitude: Double = currentUserLocation.coordinate.latitude, longitude: Double = currentUserLocation.coordinate.longitude) {
         yelpClient?.search(with: YLPCoordinate(latitude: latitude, longitude: longitude), completionHandler: { result, err in
             if result != nil {
-                if let businesses = result?.businesses {
-                    self.locations = businesses
-                    self.delegate?.browseViewModelDidUpdateLocation(self, location: businesses)
+                if let yelpBusinessItems = result?.businesses {
+                    for item in yelpBusinessItems {
+                        let bizModel = Business(model: item)
+                        self.businesses.append(bizModel)
+                    }
+
+                    self.delegate?.browseViewModelDidUpdateBusinessesNearUser(self, businesses: self.businesses)
                 }
 
             } else {
@@ -50,5 +54,5 @@ class BrowseViewModel: NSObject {
 }
 protocol BrowseViewModelDelegate: class {
     func browseViewModelYelpClientCreate(_ browseViewModel: BrowseViewModel)
-    func browseViewModelDidUpdateLocation(_ browseViewModel: BrowseViewModel, location: [YLPBusiness])
+    func browseViewModelDidUpdateBusinessesNearUser(_ browseViewModel: BrowseViewModel, businesses: [Business?])
 }

@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import SnapKit
 
-class LocationDetailView: UIView {
+class BusinessDetailView: UIView {
     var mapView: MKMapView
     var title: UILabel
 
