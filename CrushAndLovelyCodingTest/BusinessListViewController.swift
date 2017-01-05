@@ -53,16 +53,16 @@ class LocationListViewController: BaseViewController,
 
     // MARK: UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.locations.count
+        return viewModel.businesses.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if viewModel.locations.count == 0 {
+        if viewModel.businesses.count == 0 {
             return UICollectionViewCell()
         }
 
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifer, for: indexPath as IndexPath) as? LoactionCollectionCell,
-            let location = viewModel.locations[indexPath.row]  else {
+            let location = viewModel.businesses[indexPath.row]  else {
                 return UICollectionViewCell()
         }
 
@@ -82,7 +82,7 @@ class LocationListViewController: BaseViewController,
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let location = viewModel.locations[indexPath.row]  else {
+        guard let location = viewModel.businesses[indexPath.row]  else {
             return
         }
 
@@ -91,7 +91,7 @@ class LocationListViewController: BaseViewController,
         navigationController?.pushViewController(vc, animated: true)
     }
 
-    override func browseViewModelDidUpdateLocation(_ browseViewModel: BrowseViewModel, location: [YLPBusiness]) {
+    override func browseViewModelDidUpdateBusinessesNearUser(_ browseViewModel: BrowseViewModel, businesses: [YLPBusiness]) {
         locationListView.reloadData()
     }
 }
